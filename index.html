@@ -39,9 +39,14 @@ recognition.maxAlternatives = 1;
       }
 
       
-
+ recognition.onspeechend = function() {
+ 
+    document.getElementById("texto").innerHTML = 'parou end';
+   
+}
     recognition.onresult = function(event) {
       
+      document.getElementById("texto").innerHTML = 'parou result';
             let resultado = event.results[0][0].transcript;
       
         document.getElementById("texto").innerHTML = resultado;
