@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    
+    <title>Teste</title>
+    
+  </head>
+  <body>   
+    <br>  </br>
+        
+    
+         <input type="submit" id="botao_falar" name="" onclick="falar()" value="falar" >
+
+<p></p>
+   
+         <h1  id="texto" >texto falado</h1>
+
+
+
+<script>
+
+var recognition = new webkitSpeechRecognition() || new SpeechRecognition(); 
+  
+if(!recognition){  alert("falhou na criacao"); console.log("falhou na criacao");    }
+
+      
+recognition.continuous = false;
+recognition.lang = 'pt-BR';
+recognition.interimResults = false;
+recognition.maxAlternatives = 1;
+
+      
+    function falar() {
+      
+        recognition.start();
+        
+      }
+
+      
+
+    recognition.onresult = function(event) {
+      
+            let resultado = event.results[0][0].transcript;
+      
+        document.getElementById("texto").innerHTML = resultado;
+        console.log(resultado);  
+      
+    }
+
+
+      
+</script>
+    
+  </body>
+</html>
